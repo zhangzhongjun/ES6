@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="utf-8" />
     <title></title>
     <script src="jquery.js" charset="utf-8"></script>
     <script>
+        // Promise对象
     let p=new Promise(function (resolve, reject){
       //异步代码
       //resolve——成功了
       //reject——失败了
 
       $.ajax({
-        url: 'data/arr.txt',
-        dataType: 'json',
+        url: &#39;data/arr.txt&#39;,
+        dataType: &#39;json&#39;,
         success(arr){
           resolve(arr);
         },
@@ -22,17 +25,15 @@
       })
     });
 
-	// then: ajax执行结束之后执行的函数
+        // then: ajax结束之后执行
     p.then(function (arr){
-      alert('成功'+arr);
+      alert(&#39;成功&#39;+arr);
     }, function (err){
       console.log(err);
-      alert('失败了'+err);
+      alert(&#39;失败了&#39;+err);
     });
-    </script>
-	
+    
+</script>
   </head>
-  <body>
-
-  </body>
+  <body></body>
 </html>

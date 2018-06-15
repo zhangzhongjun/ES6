@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script>
+    let p1=new Promise(function (resolve, reject){
+      $.ajax({
+        url: &#39;data/arr.txt&#39;,
+        dataType: &#39;json&#39;,
+        success(arr){
+          resolve(arr);
+        },
+        error(err){
+          reject(err);
+        }
+      })
+    });
+    let p2=new Promise(function (resolve, reject){
+      $.ajax({
+        url: &#39;data/json.txt&#39;,
+        dataType: &#39;json&#39;,
+        success(arr){
+          resolve(arr);
+        },
+        error(err){
+          reject(err);
+        }
+      })
+    });
+
+        // 全部都成功
+    Promise.all([
+      p1, p2
+    ]).then(function (arr){
+      let [res1, res2]=arr;
+
+      alert(&#39;全都成功了&#39;);
+      alert(res1);
+      alert(res2);
+    }, function (){
+      alert(&#39;至少有一个失败了&#39;);
+    });
+    
+</script>
+  </head>
+  <body></body>
+</html>

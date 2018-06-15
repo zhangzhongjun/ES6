@@ -4,29 +4,24 @@
 		<meta charset="utf-8">
 		<title></title>
         <script>
-        	let str = "{\"name\":\"john\",\"age\":12}";
-        	let json = JSON.parse(str);
-        	console.log(json);
-        	
-			let j = {"name":"ads","age":1};
-			console.log(JSON.stringify(j));
-			
-			let j2 = {
-				str,
-				"a":12,
-				show(){
-					alert(this.a);
-				},
-				add:function(b){
-                    alert(this.a+b);
-				},
-				showStr(){
-                    alert(this.str);
-				}
-			};
-			j2.show();
-			j2.add(12);
-			j2.showStr();
+			function * show(){
+                alert(12);
+                alert(14);
+                let res = yield [1,2,3];
+                alert(13);
+                alert(res);
+			}
+			// 创建一个生成器对象
+			let genObj=show();
+			// 输出12 14
+			let aa = genObj.next("a");
+			// 输出13
+			let bb = genObj.next("b");
+			// 输出 {value: Array(3), done: false}
+			alert(aa);
+			console.log(aa);
+			alert(bb);
+			console.log(bb);
         </script>
 
 	</head>

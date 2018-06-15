@@ -747,3 +747,97 @@ JSON的简写:
 	</body>
 </html>
 ```
+
+
+## generator
+
+普通函数 中间不能停
+generator 中间可以使用yield
+
+可以有下面三种写法：
+function * 函数名
+function* 函数名
+function *函数名
+
+yield: 停止
+next() 函数：向前推动一步
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+        <script>
+			function * show(){
+                alert(12);
+                alert(14);
+                yield;
+                alert(13);
+			}
+			// 创建一个生成器对象
+			let genObj=show();
+			// 输出12 14
+			genObj.next();
+			// 输出13
+			genObj.next();
+        </script>
+
+	</head>
+	<body>
+		<div id="div1" >
+		
+		</div>
+	</body>
+</html>
+```
+
+## yield
+
+* 使用next传参：
+1. 不能给第一个过程（函数开始到遇到第一个yield）传参。可以使用函数参数给第一个参数传参。
+2. 第一个next方法是给第二个过程（第一个yield到第二个yield）传参
+3. 第二个next方法是给第三个过程（第二个yield到第三个yield）传参
+
+* 使用yield返回，使用next接收：
+1. 第一个next接收到的是第一个过程的输出
+2. 第二个next接收到的是第二个过程的输出
+3. 最后一个过程的输出应该由return返回
+
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+        <script>
+			function * show(){
+                alert(12);
+                alert(14);
+                let res = yield [1,2,3];
+                alert(13);
+                alert(res);
+			}
+			// 创建一个生成器对象
+			let genObj=show();
+			// 输出12 14
+			let aa = genObj.next("a");
+			// 输出13
+			let bb = genObj.next("b");
+			// 输出 {value: Array(3), done: false}
+			alert(aa);
+			console.log(aa);
+			// 输出 {value: undefined, done: true}
+			alert(bb);
+			console.log(bb);
+        </script>
+
+	</head>
+	<body>
+		<div id="div1" >
+		
+		</div>
+	</body>
+</html>
+```
